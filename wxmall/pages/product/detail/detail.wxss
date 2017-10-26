@@ -1,0 +1,248 @@
+.swiper-view {
+    width: 100%;
+    margin: 2px auto;
+    height:240px;
+}
+
+.swiper-item{
+   width: 100%;
+   height: 100%;
+   text-align: center;
+}
+
+.swiper-view image {
+    width: 100%;
+}
+
+.title {
+    color:black;
+    font-family:"微软雅黑";
+    font-size:13px;
+    line-height: 22px;
+}
+
+.price {
+    color:red;
+    font-size:13px;
+    line-height: 22px;
+}
+
+.price_blod {
+    color:red;
+    font-size:13px;
+    font-weight:bold;
+    line-height: 22px;
+}
+
+.text {
+    color:black;
+    font-size:13px;
+    line-height: 22px;
+}
+
+
+.weui-tabbar__icon{
+   margin-top: 4px;
+}
+/**
+弹出框
+*/
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.drawer_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+}
+
+.close_icon {
+  width: 25rpx;
+  height: 25rpx;
+  line-height: 25rpx;
+  font-size: 30rpx;
+  position: absolute;
+  right: 5rpx;
+  top:5rpx;
+  padding: 10rpx;
+  color: #ccc;
+  border: 1rpx solid #ccc;
+  border-radius: 50%;
+  text-align: center;
+  background: #fff;
+}
+
+.drawer_attr_content {
+  padding: 20rpx;
+  height: 600rpx;
+  overflow-y: scroll;
+}
+
+.drawer_image {
+  width: 400rpx;
+  height: 400rpx;
+}
+
+.drawer_desc{
+    font-size:26rpx;
+    margin:20rpx;
+}
+
+/*商品信息*/
+.wy-media-box{
+  background:#fff; 
+  margin: 0px 5px;
+  border-bottom:1rpx solid #e1e1e1;
+  }
+
+.wy-media-box-nomg{
+  background:#fff;
+  padding:8px;
+  border-bottom:1px solid #e1e1e1;}
+
+.wy-media-box__title{font-size:14px; font-weight:normal; overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2; line-height:1.5;}
+
+
+
+
+.order_comment_item {
+   padding-top:10rpx;
+   padding-left:10rpx; 
+   border-bottom:1px solid #e1e1e1;
+}
+
+.order_comment_textarea_box{
+   padding-left:15rpx; 
+}
+
+.cell_title {
+    margin-bottom:.2em;
+    padding-right:50rpx;
+    color:black;
+    font-family:"微软雅黑";
+    font-size:13px;
+}
+
+.cell_price {
+    margin-bottom:.2em;
+    padding-right:50rpx;
+    color:red;
+    font-size:13px;
+}
+
+
+.order_comment_img {
+  width:  134rpx;
+  height: 134rpx;
+  border: 1rpx solid #e5e5e5;
+}
+
+.nuber_box{
+  padding:10px 5px;
+}
+/*商品加减按钮*/
+/*stepper容器*/
+.stepper {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	width: 102px;
+	height: 26px;
+  color: #ccc;
+}
+
+
+/*加号与减号*/
+.stepper text {
+	width: 25px;
+	line-height: 26px;
+	text-align: center;
+	float: left;
+}
+
+/*数值*/
+.stepper input {
+	color: black;
+	float: left;
+	margin: 0 auto;
+	width: 50px;
+	height: 26px;
+	text-align: center;
+	font-size: 14px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+.totalPrice{
+  display: inline-block;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  padding-right: 30rpx;
+  padding-left: 30rpx;
+  margin-bottom: 30rpx;
+  font-size: 36rpx;
+  color: red;
+}
+
+.cofrimbar{
+   width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding: 5px; 
+    border-top: 1rpx solid orange;
+}
+
+.okbox{
+    width: 200rpx;
+    height: 80rpx;
+    text-align: center;
+    background-color:green;
+    margin-right: 10px;
+     border-radius:10rpx;
+     color: white;
+    font-family:"微软雅黑";
+    line-height: 80rpx;
+    font-size: 32rpx;
+}
+ .pl-box{
+   padding-bottom:10px;
+   background:#e5e5e5; 
+ }
+.pl-media-box{
+  background:#fff; 
+  border-bottom:1rpx dashed #e1e1e1;
+  }
+ .pl-media-desc{
+    background:#fff; 
+    padding: 5px;
+ } 
+.user_img{
+   height:40px;
+   width:40px;
+   border-radius:50%;
+}
+
+.pl-star{
+   color: white;
+   padding: 0px 4px;
+}
+
+
+
+
+

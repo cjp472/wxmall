@@ -1,0 +1,147 @@
+<view class='weui-content'>
+  <view class="wy-center-top">
+    <view class="weui-media-box weui-media-box_appmsg">
+      <view class="weui-media-box__hd"><image class="weui-media-box__thumb radius" src="{{userInfo.avatarUrl}}" alt=""/></view>
+      <view class="weui-media-box__bd">
+        <view class="weui-media-box__title user-name">{{userInfo.nickName}}</view>
+        <view class="user-grade">等级：普通会员</view>
+        <!-- <view class="user-integral">待返还金额：<em class="num">500.0</em>元</view> -->
+      </view>
+    </view>
+<!--    <view class="xx-menu weui-flex">
+      <view class="weui-flex__item"><view class="xx-menu-list">987<label>账户余额</label></view></view>
+      <view class="weui-flex__item"><view class="xx-menu-list">459<label>我的蓝豆</label></view></view>
+      <view class="weui-flex__item"><view class="xx-menu-list">4<label>收藏商品</label></view></view>
+    </view>-->
+  </view>
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__hd">
+      <view class="weui-cell center-alloder">
+          <view class="weui-cell__hd">
+                 <image style="width:20px;height:20px" src="../../style/images/center-icon-order-all.png" alt=""/>
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <navigator url="/pages/order/order?statusIndex=0">
+              <view class="center-list-txt">全部订单</view>
+            </navigator>
+          </view>
+        <view class="weui-cell__ft"></view>
+      </view>   
+    </view>
+    <view class="weui-panel__bd">
+      <view class="weui-flex">
+        <view class="weui-flex__item">
+          <view class="center-ordersModule">
+           <navigator url="/pages/order/order?statusIndex=1">
+              <view  wx:if="{{unpayedCount>0}}" class="weui-badge orderTip" >{{unpayedCount}}</view>
+              <view class="imgicon"><image style="width:20px;height:20px" src="../../style/images/center-icon-order-dfk.png" /></view>
+              <view class="name">待付款</view>
+           </navigator>   
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="center-ordersModule">
+            <navigator url="/pages/order/order?statusIndex=2">
+               <view  wx:if="{{payedCount>0}}" class="weui-badge orderTip" >{{payedCount}}</view>
+              <view class="imgicon"><image style="width:20px;height:20px" src="../../style/images/center-icon-order-dfh.png" /></view>
+              <view class="name">待发货</view>
+            </navigator>     
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="center-ordersModule">
+            <navigator url="/pages/order/order?statusIndex=3">
+               <view  wx:if="{{shippedCount>0}}" class="weui-badge orderTip" >{{shippedCount}}</view>
+              <view class="imgicon"><image style="width:20px;height:20px" src="../../style/images/center-icon-order-dsh.png" /></view>
+              <view class="name">待收货</view>
+            </navigator>   
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view href="orders.html" class="center-ordersModule">
+          <navigator url="/pages/order/order?statusIndex=4">
+             <view  wx:if="{{complateCount>0}}" class="weui-badge orderTip" >{{complateCount}}</view>
+            <view class="imgicon"><image style="width:20px;height:20px" src="../../style/images/center-icon-order-dpj.png" /></view>
+            <view class="name">待评价</view>
+          </navigator>    
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__hd">
+      <view href="myburse.html" class="weui-cell weui-cell_access center-alloder">
+          <view class="weui-cell__hd"><image style="width:20px;height:20px" src="../../style/images/center-icon-jk.png" alt="" class="center-list-icon"/></view>
+          <view class="weui-cell__bd weui-cell_primary"><label class="center-list-txt">我的小金库</label></view>
+        <view class="weui-cell__ft"></view>
+      </view>   
+    </view>
+    <view class="weui-panel__bd">
+      <view class="weui-flex">
+        <view class="weui-flex__item">
+          <view href="myburse.html" class="center-ordersModule">
+            <view class="center-money"><em>800.0</em></view>
+            <view class="name">账户总额</view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view href="myburse.html" class="center-ordersModule">
+            <view class="center-money"><em>50.0</em></view>
+            <view class="name">返现金额</view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view href="myburse.html" class="center-ordersModule">
+            <view class="center-money"><em>550.0</em></view>
+            <view class="name">待返还</view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view href="myburse.html" class="center-ordersModule">
+            <view class="center-money"><em>165</em></view>
+            <view class="name">蓝豆</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  -->
+  
+  <view class="weui-panel">
+        <view class="weui-panel__bd">
+          <view class="weui-media-box weui-media-box_small-appmsg">
+            <view class="weui-cells">
+             <!--
+              <view class="weui-cell weui-cell_access" >
+                <view class="weui-cell__hd"><image style="width:20px;height:20px" src="../../style/images/center-icon-jyjl.png" alt=""/></view>
+                <view class="weui-cell__bd weui-cell_primary">
+                  <text class="center-list-txt">交易记录</text>
+                </view>
+                <view class="weui-cell__ft"></view>
+              </view>
+              -->
+              <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__hd"><image style="width:20px;height:20px" src="../../style/images/center-icon-sc.png" alt="" /></view>
+                <view class="weui-cell__bd weui-cell_primary">
+                  <text class="center-list-txt">我的收藏</text>
+                </view>
+                <view class="weui-cell__ft"></view>
+              </view>
+              <view class="weui-cell weui-cell_access" bindtap="navigateToAddress">
+                <view class="weui-cell__hd"><image style="width:20px;height:20px" src="../../style/images/center-icon-dz.png" alt="" /></view>
+                <view class="weui-cell__bd weui-cell_primary">
+                  <text class="center-list-txt">地址管理</text>
+                </view>
+                <view class="weui-cell__ft"></view>
+              </view>
+              
+              
+             
+            </view>
+          </view>
+        </view>
+      </view>
+</view>

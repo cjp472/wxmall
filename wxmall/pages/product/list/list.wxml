@@ -1,0 +1,66 @@
+<view >
+  <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+              <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="search"/>
+              <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                  <icon type="clear" size="14"></icon>
+              </view>
+          </view>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="resetSearch">取消</view>
+  </view>
+  <!--
+  <view class="pro-sort">
+    <view class="weui-flex">
+      <view class="weui-flex__item"><view class="placeholder NormalCss">综合</view></view>
+      <view class="weui-flex__item"><view class="placeholder SortAscCss">按销量</view></view>
+      <view class="weui-flex__item"><view class="placeholder SortDescCss">按价格</view></view>
+    </view>
+  </view>
+  -->
+  
+</view>
+
+<!--主体-->
+<view style="height:{{scollHeight}}px;">
+  <scroll-view style="height:{{scollHeight}}px;"  scroll-y="true"  bindscrolltolower="lower">
+    <view   bindtap="bindViewTap" class="item" wx:for="{{products}}" wx:key="id" wx:for-index="idx"  wx:for-item="item" data-id="{{item.id}}">
+      <view class="weui-media-box weui-media-box_appmsg">
+        <view class="weui-media-box__hd"><image class="weui-media-box__thumb" src="{{item.mainPic}}" alt=""/></view>
+        <view class="weui-media-box__bd">
+          <view class="weui-media-box__desc">{{item.name}}</view>
+          <view class="price">¥<em class="num">{{item.price}}</em></view>
+          <view>
+            <li class="weui-media-box__info__meta"><em class="num">0</em>条评价</li>
+            <li class="weui-media-box__info__meta"><em class="num">100%</em>好评</li>
+          </view >
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<view class="tools_bar">
+    <picker bindchange="selectCategory" range-key="name"  value="{{selectCateIndex}}" range="{{categorys}}">
+        <view style="padding:4px;width: 80px; height: 50px;color:#479de6;">
+            <view style="height:24:px"> <image src="/style/images/iconfont-list-active.png" style="width:12px;height:12px;"/>分类：</view>
+            <view class="text">{{cateName}}</view>
+        </view>
+    </picker>  
+    <view class="tools_box" bindtap="goIndex">
+        <image src=" /style/images/iconfont-home.png" class="icon"/>
+          <view class="text">首页</view>
+    </view>
+     
+    <view class="tools_box" bindtap="goCart">
+        <image src="/style/images/iconfont-cart.png" class="icon"/>
+          <view class="text">购物车</view>
+    </view>
+    <view class="tools_box" bindtap="goUser">
+        <image src="/style/images/iconfont-user.png" class="icon"/>
+          <view class="text">个人</view>
+    </view>
+</view>
+

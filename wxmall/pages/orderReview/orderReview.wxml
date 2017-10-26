@@ -1,0 +1,42 @@
+<form bindsubmit="saveReview">
+  <view class="order_title">
+      <view class="weui-flex">
+          <view class="title_img">
+            <image src="{{product.productImg}}" class="order_comment_img"></image>
+          </view>
+        
+          <view class="weui-flex__item order_comment_box">
+              <view class="cell_title">{{product.productName}}</view>
+               <view class="grey">订单号：{{order.orderSn}}</view>
+               <view class="grey">{{order.orderCreated}}</view>
+          </view>
+      </view>
+  </view>
+
+  <view class="weui-flex order_comment_type">
+    <view class="weui-flex__item">
+      <view class="placeholder" bindtap="selectCommentType"  data-type="3">
+        <image src="{{commentType=='3'?'/style/images/icon_good_select.png':'/style/images/icon_good.png'}}" style="width:50rpx;height:50rpx;"></image>
+        <text class="{{commentType=='3'?'order_comment_type_selected':'order_comment_type_default'}}">好评</text>
+      </view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder" bindtap="selectCommentType" data-type="2">
+        <image src="{{commentType=='2'?'/style/images/icon_middle_select.png':'/style/images/icon_middle.png'}}" style="width:50rpx;height:50rpx;"></image>
+        <text class="{{commentType=='2'?'order_comment_type_selected':'order_comment_type_default'}}">中评</text>
+      </view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder" bindtap="selectCommentType"  data-type="1">
+        <image src="{{commentType=='1'?'/style/images/icon_bad_select.png':'/style/images/icon_bad.png'}}" style="width:50rpx;height:50rpx;"></image>
+        <text class="{{commentType=='1'?'order_comment_type_selected':'order_comment_type_default'}}">差评</text>
+      </view>
+    </view>
+  </view>
+  <view class="order_comment_textarea_box">
+     <textarea bindblur="bindTextAreaBlur" style="border:1px solid #e1e1e1;" placeholder="请输入评言" maxlength="200" rows="4"></textarea>
+  </view>
+  <view style="padding:12px;text-align:center;">
+       <button type="primary" size="mini"  formType="submit"> 发　　表 </button>
+  </view>
+</form>

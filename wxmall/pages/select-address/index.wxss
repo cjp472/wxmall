@@ -1,0 +1,38 @@
+.container {
+    background-color:white;
+}
+
+.icon {
+  height:20px;
+  width:20px;
+  color:aquamarine;
+}
+
+
+.bottom-box{
+  border-top: 1px solid #cbcbcb;
+  padding: 10px 20px;
+}
+
+
+.address_list_delete {
+  position: absolute;
+  right: -180rpx;
+  top: 0;
+  width: 100rpx;
+  height: 100%;
+  line-height: 160rpx;
+  text-align: center;
+  background: #e04904;
+  color: #fff;
+  font-size: 30rpx;
+}
+
+
+
+.address-list{
+    width: 100%;
+    background-color: #fff;
+    margin-top: 20rpx;
+}
+

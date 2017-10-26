@@ -1,0 +1,68 @@
+<view class="weui-content">
+    <view class="address_box">  
+      <view  wx:if="{{receiver}}" id="{{receiver.id}}"  bindtap="selectAddress" class="weui-cell">
+          <view class="weui-cell__bd">
+              <view> <text style="color:red;">{{receiver.receiver_name}}</text> {{receiver.phone}}</view>
+              <view>{{receiver.address}}</view>        
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>      
+      </view>
+      <view wx:else>
+			    <view  class="weui-cell"  bindtap="addAddress">
+             <view class="weui-cell__bd">
+	            	请填写收货地址
+	            </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+	        </view>
+      </view>
+    </view>
+   
+   <view class="order_info weui-cells" >
+      <view class="order_comment_item" wx:for="{{detail.order.orderItems}}">
+              <view class="weui-flex">
+                  <view class="title_img">
+                    <image src="{{detail.img_domain}}{{item.productImg}}" class="order_comment_img"></image>
+                  </view>
+                
+                  <view class="weui-flex__item order_comment_box">
+                      <view class="cell_title">{{item.productName}}</view>
+                      <view class="cell_price">￥{{item.price}}　　×{{item.quantity}}</view>
+                      <view class="spec_box">
+                        <view class="spec_cell"  wx:for="{{item.specificationValues}}" wx:for-item="attrValueObj">{{attrValueObj.name}}</view>
+                     </view>    
+                </view>
+              </view>
+        </view>
+   </view>  
+
+
+  <view class="weui-cells" style="font-size: 14px;padding-bottom: 45px;">
+  	<view class="weui-cell">
+	  	<view class="weui-cell__bd">商品金额</view>
+	    <view class="weui-cell__ft"><text style="color: red;">￥{{detail.order.totalPrice}}</text></view>
+    </view>
+    <view class="weui-cell">
+	  	<view class="weui-cell__bd">邮费</view>
+	    <view class="weui-cell__ft">+ ￥<text >{{detail.order.postFee}}</text></view>
+    </view>
+    <!-- <view class="weui-cell weui-cell_access">
+      	<view class="weui-cell__bd"><p>优惠</p></view>
+      	<view class="weui-cell__ft">使用优惠码</view>
+    </view> -->
+    <view class="weui-cells__title">买家留言</view>
+  	<view class="weui-cell">
+	    <view class="weui-cell__bd weui-cell-primary">
+	      <textarea bindblur="bindTextAreaBlur" class="weui-textarea" placeholder="请输入留言" rows="2"></textarea>
+	    </view>
+  	</view>
+  </view>
+
+  <view class="weui-tabbar toolbar-bottom">
+    <view class="weui-tabbar__item">
+      <view  class="promotion-foot-menu-label">合计：<text style="color:red;">￥{{detail.order.payFee}}</text></view>
+    </view>
+	  <view  class="weui-tabbar__item red-color" style="width:300rpx;" bindtap="created" >
+         <text class="promotion-foot-menu-label">微信支付</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,17 @@
+
+.weui-media-box__desc{
+  padding: 2px 0;
+}
+
+.status{
+  color:orangered;
+  font-family:"微软雅黑";
+}
+
+.price{
+  font-family:Arial, Helvetica, sans-serif;
+  color:orange;
+}
+.spec{
+  color:blueviolet;
+}

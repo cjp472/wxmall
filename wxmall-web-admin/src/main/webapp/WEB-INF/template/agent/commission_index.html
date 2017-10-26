@@ -1,0 +1,135 @@
+[#include "/includes/_layout.html"/]
+[@layout]
+<div class="wrapper wrapper-content">
+	<div class="row animated fadeInLeft">
+		[#include "/includes/menu-agent.html" /]
+	
+		<div class="col-sm-11">
+		
+		<div class="row content-tabs">
+			<nav class="page-tabs J_menuTabs">
+		       <div class="page-tabs-content" style="margin-left: 0px;">
+		       		<a href="${webctx}/commission" class="J_menuTab active">分销商佣金</a>
+		           	<a href="${webctx}/commission/rate" class="J_menuTab">佣金设置</a>
+		       </div>
+		   	</nav>
+		</div>
+		
+		<div id="tableList" class="content row ibox-content" style="padding-top: 10px;">
+			<div id="promotionToolsbar" class="panel-body">
+				<div id="pager" class="jqpager" style="margin-bottom: 1px;"></div>
+				<!-- <div style="float: left;">
+					<button id="mypromotionDelBtn" class="btn btn-info">批量删除</button>
+				</div> -->
+			</div>
+			<table class="table table-striped table-bordered bootstrap-datatable datatable" id="mainTable" border="0">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="all" title="全选/反选" style="margin-right: 4px; vertical-align: middle;"/></th>
+						<th><span style="vertical-align: middle;">&nbsp;&nbsp;微信</span></th>
+						<th>分销商姓名</th>
+						<th>分销商手机</th>
+						<th>累计总佣金</th>
+						<th>可提现佣金</th>
+						<th>已提现佣金</th>
+					</tr>
+				</thead>
+				<tbody class="promotionLotGrid">
+				</tbody>
+			</table>
+		</div> 
+		</div>
+	</div>	
+</div>
+
+<!-- 模板开始 -->
+<script type="text/template" id="promotion_table_tr_tpl">
+		<tr class="package">
+			<td><input type="checkbox" class="commchk" id="checkbox_{id}" style="margin-right: 4px; vertical-align: middle;"/></td>
+			<td><img width="40px" height="40px" src="{nickHeader}"/>&nbsp;{nickName}</td>
+            <td><span>{agentName}</span></td>
+			<td><span>{agentPhone}</span></td>
+			<td><span>{totalCommission}</span></td>
+			<td><span>{commissionValue}</span></td>
+			<td><span>{cashValue}</span></td>
+		</tr>
+</script>
+<script type="text/template" id="table_noresult_tr_tpl">
+	<tr class="package">
+			<td class="center" colspan="7">
+				没有结果集，现在去创建吧，
+				<a href="${webctx}/promotion/set" style="text-decoration: underline;">去创建</a>
+			</td>
+		</tr>
+</script>
+[/@layout]
+<script type="text/javascript">
+	$(document).ready(function() {
+        searchpromotions();
+	});
+	
+	var pageClick = function(pageNo) {
+		searchpromotions(pageNo);
+	}
+	
+	var searchpromotions = function(currPage){
+		var params = {};
+		//其他查询条件
+		if(currPage){
+			params.page = currPage;
+		}
+		$("#mainTable").mask("加载中...");
+		var url = obz.ctx + "/commission/list";
+		obz.ajaxJson(url, params, function(resp){
+			$("#mainTable").unmask();
+			var result = resp.data;
+			$(".promotionLotGrid").empty();
+			if(currPage){
+				$("#pager").pager({ pagenumber:currPage, recordcount:result.totalRow, pagesize:result.pageSize, recordtext:'共 {0} 页, {1} 条记录', buttonClickCallback: pageClick });
+			}else{
+				$("#pager").pager({ recordcount:result.totalRow, pagesize:result.pageSize, recordtext:'共 {0} 页, {1} 条记录', buttonClickCallback: pageClick });	
+			}
+			var dataList = result.list;
+			if(dataList.length>0){
+				for(var i=0;i<dataList.length;i++){
+					var _row = dataList[i];
+					var trHtml = obz.dataTemplate4obj($("#promotion_table_tr_tpl").html(), _row);
+					$(".promotionLotGrid").append(trHtml);
+				}
+				TBatch.checkCheckbox();
+				TBatch.initCheckboxClick();
+				TBatch.initOptEvent(ActivityTableOpt.init());
+			}
+		});
+	}
+	
+	//=============================表格操作事件开始=============================================
+	var ActivityTableOpt = {
+		edit : function(param){
+			var id = param[1];
+			location.href = obz.ctx + "/promotion/set/?pid="+id;
+		}, 
+		del : function(param){
+			obz.showMessage("确定删除吗？删除后不可恢复，请谨慎操作！", function(){
+    			var ids = param[1];
+	    		obz.ajaxJson(obz.ctx + "/promotion/del", {ids: ids}, function(resp){
+	    			if(resp.code==200){
+	    				searchpromotions();	
+	    			}
+	    		});
+    		});
+			return false;
+		},
+		init : function(){
+			var optArray = new Array();
+			optArray.push(this.edit);
+			optArray.push(this.del);
+			return optArray;
+		}
+	}	
+	//=============================表格操作事件结束=============================================
+</script>
+<script>
+Template.init("#menu-agent-first");
+Template.initSecond("#menu-commission");
+</script>

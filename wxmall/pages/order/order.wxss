@@ -1,0 +1,34 @@
+.weui-media-box__desc{
+  padding: 2px 0;
+}
+
+.status{
+  border:1px solid orangered;
+  color:white;
+  background:orangered;
+  padding: 1px;
+}
+.act{
+  color: orangered;
+}
+.padding_0{
+  padding:0px;
+}
+.price{
+  font-family:Arial, Helvetica, sans-serif;
+  color:orange;
+}
+.spec{
+  color:green;
+}
+.icon{
+  height:15px;
+  width:15px;
+  border-radius:50%
+}
+.topl{
+    padding: 1px;
+   color:white;
+    background:#33cc00;
+    border:1px solid #33cc00;
+}

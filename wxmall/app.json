@@ -1,0 +1,59 @@
+{
+  "debug" : true,
+  "pages":[
+     "pages/index/index",
+     "pages/categroy/categroy",
+     "pages/product/list/list",
+     "pages/product/detail/detail",
+     "pages/user/user",
+     "pages/order/order",
+     "pages/orderDetail/orderDetail",
+     "pages/orderReview/orderReview",
+     "pages/cart/cart",
+     "pages/pay/jiesuan",
+     "pages/address-add/index",
+     "pages/select-address/index"
+     
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#479de6",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "小商城",
+    "backgroundColor": "#f8f8f8",
+    "backgroundTextStyle": "dark"
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "connectSocket": 60000,
+    "uploadFile": 60000,
+    "downloadFile": 60000
+  }
+  ,"tabBar": {
+      "color": "#999999",
+      "selectedColor": "#479de6",
+      "borderStyle": "#c0bfc4",
+      "backgroundColor": "#f7f7fa",
+      "list": [
+        {
+            "pagePath": "pages/index/index",
+            "iconPath": "style/images/iconfont-home.png",
+            "selectedIconPath": "style/images/iconfont-home-active.png",
+            "text": "首页"
+        }, {
+        "pagePath": "pages/categroy/categroy",
+        "iconPath": "style/images/iconfont-list.png",
+        "selectedIconPath" : "style/images/iconfont-list-active.png",
+        "text": "分类"
+        },{
+            "pagePath": "pages/cart/cart",
+            "iconPath": "style/images/iconfont-cart.png",
+            "selectedIconPath": "style/images/iconfont-cart-active.png",
+            "text": "购物车"
+        }, {
+        "pagePath": "pages/user/user",
+        "iconPath": "style/images/iconfont-user.png",
+        "selectedIconPath" : "style/images/iconfont-user-active.png",
+        "text": "个人"
+      }]
+    }
+}

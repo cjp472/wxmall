@@ -1,0 +1,145 @@
+<view class="weui-content">
+  <view class="weui_tab">
+    <view class="weui-navbar" >
+        <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+          <view id="{{index}}" class="weui-navbar__item proinfo-tab-tit {{activeIndex == index ? 'weui-bar__item--on' : ''}}" bindtap="tabClick">{{item}}
+          </view>
+         </block>
+    </view>
+
+    <view class="weui-tab__bd proinfo-tab-con">
+      <view hidden="{{activeIndex != 0}}" class="weui-tab__content">
+          <!--轮播图banner-->
+          <swiper class="swiper-view" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+                  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+              <block wx:for-items="{{detail.imageList}}">
+                  <swiper-item class="swiper-item">
+                      <image src="{{item}}" mode='scaleToFill' class="swiper-image"/>
+                  </swiper-item>
+              </block>
+          </swiper>
+
+          <view class="wy-media-box-nomg">
+              <view class="title">{{ detail.product.name }}</view>
+            <view class="price">¥ {{ detail.product.price }}</view>
+            <view class="text" >剩余：{{ detail.product.stock }}  销量：{{detail.product.sales}}</view>
+          </view>
+
+          <view wx:if="{{detail.promotionInfo}}" class="wy-media-box-nomg">
+              <view class="price_blod">{{detail.promotionInfo.promotionTag}} {{detail.promotionInfo.promotionInfo}}</view> 
+              <view class="text" >    {{detail.promotionInfo.promotionTime}}</view>
+          </view>
+
+          <view wx:if="{{detail.cashback}}" class="wy-media-box-nomg">
+                  <view class="price">{{detail.cashback.tag}}</view> 
+                  <view class="text">{{detail.cashback.backTime}}</view> 
+          </view>
+
+          <view wx:if="{{detail.fullCutInfo}}" class="wy-media-box-nomg">
+            <view class="weui-media-box_appmsg">
+              <view class="weui-media-box__hd proinfo-txt-l"><text class="promotion-label-tit">满减</text></view>
+              <view  wx:for-items="{{detail.fullCutInfo}}">
+                <view class="yhq">{{item.fullCutInfo}}
+                </view> 
+                  <view class="yhq-btn">{{item.fullCutTime}}</view>
+              </view>
+            </view>
+          </view>
+
+          <import src="../wxParse/wxParse.wxml"/> 
+          <view class="wxParse">
+              <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+          </view>
+      </view>
+     
+      <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+        <scroll-view style="height:{{scollHeight}}px;"  scroll-y="true"  bindscrolltolower="lower"> 
+          <view wx:if="{{reviews}}" wx:for-items="{{reviews}}" wx:key="id"  wx:for-item="rv" class="pl-box">
+              <view class="pl-media-box">
+                  <view class="weui-cell">
+                      <view class="weui-cell__hd" style="padding-right:8px;">
+                        <image class="user_img" src="{{rv.headimgurl}}" alt=""/>
+                      </view>
+                      <view class="weui-cell__bd weui-cell_primary" style="padding-right:8px;">
+                          <view>{{rv.nickname}}</view>
+                          <view style="color:grey;font-size:12px;">{{rv.created}}</view>
+                      </view>
+                      <view wx:if="{{rv.score==3}}" class="weui-cell__ft pl-star" style="background:orangered;">好评</view>
+                      <view  wx:if="{{rv.score==2}}" class="weui-cell__ft pl-star" style="background:orange;">中评</view>
+                      <view  wx:if="{{rv.score==1}}"  class="weui-cell__ft pl-star" style="background:darkgrey;">差评</view>
+                  </view>
+              </view>  
+              <view class="pl-media-desc">{{rv.content}}</view>
+          </view>  
+        </scroll-view>      
+      </view>
+
+    </view>
+  </view>
+
+  
+  <view class="weui-tabbar"> 
+    <view bindtap="onCartClick"   style="width:100rpx; position:relative; padding-top:30rpx; text-align:center;" >
+      <view class="weui-badge" style="position: absolute;top: -5rpx">{{cartCount}}</view>
+      <view class="weui-tabbar__icon promotion-foot-menu-cart"></view>
+    </view>
+    <view class="yellow-color" style="width:300rpx;" bindtap="setModalStatus" data-status="1" data-flag="0">
+      <text class="promotion-foot-menu-label">加入购物车</text>
+    </view>
+    <view class="red-color" style="width:350rpx;" bindtap="setModalStatus" data-status="1" data-flag="1">
+      <text class="promotion-foot-menu-label">立即购买</text>
+    </view>
+  </view>
+
+
+  <view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
+  <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+     <view class="close_icon" bindtap="setModalStatus" data-status="0" >×</view>
+
+      <view class="order_comment_item">
+          <view class="weui-flex">
+              <view class="title_img">
+                <image src="{{detail.product.image}}" class="order_comment_img"></image>
+              </view>
+            
+            <view class="weui-flex__item order_comment_textarea_box">
+               <view class="cell_title">{{detail.product.name}}</view>
+               <view class="cell_price">￥{{price}}</view>
+            </view>
+          </view>
+      </view>
+
+      <view class="wy-media-box weui-media-box_text" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrIndex">
+      <view class="weui-media-box_appmsg">
+              <view class="weui-media-box__hd proinfo-txt-l"><span class="promotion-label-tit">{{attrValueObj.attrKey}}</span></view>
+                <view class="promotion-sku clear">
+                <ul class="app-image-list">
+                    <li class="attr_value {{attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'active':''):''}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}" data-sfid="{{attrValueObj.attrKeyId}}" data-id="{{attrValueObj.attrValuesId[valueIndex]}}"
+        data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex"><a href="javascript:;">{{value}}</a></li>
+                  </ul>              
+      </view>
+        </view>
+    </view>
+
+        <view class="weui-flex nuber_box">
+             <view class="promotion-label-tit" style="padding-top:7px;">购买数量：</view>
+              <view class="stepper">
+                <text  data-index="{{index}}" catchtap="bindMinus">-</text>
+                <input maxlength="5" type="number" data-index="{{index}}" style="color:red;" catchchange="bindManual" catchtap="bindManualTapped" value="{{num}}" />
+                <text  data-index="{{index}}" catchtap="bindPlus">+</text>
+              </view>
+          </view>
+
+         <view class="cofrimbar"> 
+                <view class="totalPrice">
+                      <text>￥{{totalPrice}}</text>
+                  </view>
+                  <view class="okbox"  bindtap="pay" >
+                      <text>确定</text>
+                  </view>
+          </view>  
+      
+    
+  </view>
+
+</view>

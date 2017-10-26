@@ -1,0 +1,103 @@
+/**index.wxss**/
+.categclass{
+    width:30px !important;
+    height:30px !important;
+}
+.swiper-view {
+    width: 100%;
+    height:180px;
+}
+.swiper-item{
+    width: 100%;
+   height: 100%;
+   text-align: center;
+}
+
+.swiper-news-box{
+  height: 60rpx;
+  padding: 25rpx;
+  font-size:32rpx;
+  border-bottom:1rpx solid #e1e1e1;
+  border-top:1rpx solid #e1e1e1;
+}
+.swiper-news{
+  width:100%;
+  height: 100%;
+}
+.title-box-center{
+  padding-top: 30rpx;
+  padding-bottom: 15rpx;
+  text-align: center;
+  font-family:"微软雅黑";
+}
+
+.title-box-left{
+  margin-top: 30rpx;
+  margin-bottom: 15rpx;
+  text-align: left;
+  font-family:"微软雅黑";
+  border-left:8rpx solid red;
+  padding-left:15rpx; 
+  padding-right:5rpx; 
+}
+
+.scroll_x_container{
+  height: 248rpx;
+  white-space: nowrap;
+  display: flex;
+  margin:0 3rpx; 
+}
+
+.scroll_box{
+   padding-right: 1px; 
+   width: 248rpx;
+   height: 248rpx;
+   display: inline-block;
+}
+.scroll_image{
+   width: 248rpx;
+   height: 248rpx;
+}
+
+.goods-container{
+  display: flex;
+  justify-content: space-between;  
+  flex-wrap:wrap;
+  box-sizing: content-box;
+  padding: 20rpx;
+  background-color:#F2f2f2;
+}
+.goods-box{
+  width: 343rpx;
+  height: 462rpx;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+}
+.goods-box .img-box{
+  width: 343rpx;
+  height: 343rpx;
+  overflow: hidden;
+}
+.goods-box .img-box image{
+   width: 343rpx;
+   height: 343rpx;
+}
+.goods-box .goods-title{
+  width: 343rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 30rpx;
+  color:#000;
+  padding-top: 10rpx;
+  padding-left: 20rpx;
+}
+.goods-box .goods-price{
+  width: 280rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+  color:#e64340;
+  padding-top: 10rpx;
+  padding-left: 20rpx;
+}

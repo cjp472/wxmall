@@ -1,0 +1,81 @@
+<swiper class="swiper-view" indicator-dots="true"  autoplay="true" interval="4000" duration="500">
+      <!--block wx:for-items="{{detail.imageList}}"-->
+          <swiper-item class="swiper-item">
+              <image src="{{shop.shop_sign}}" mode='scaleToFill' class="swiper-image"/>
+          </swiper-item>
+      <!--/block-->
+</swiper>
+<view class="weui-content">
+<!--图标分类-->
+  <view class="weui-flex wy-iconlist-box" style="font-size:12px;">
+    <view class="weui-flex__item"><view class="wy-links-iconlist"><view class="img"><image class="categclass" src="../../style/images/icon-link1.png"/></view>男装</view></view>
+    <view class="weui-flex__item"><view class="wy-links-iconlist"><view class="img"><image class="categclass" src="../../style/images/icon-link2.png"/></view>女装</view></view>
+    <view class="weui-flex__item"><view class="wy-links-iconlist"><view class="img"><image class="categclass" src="../../style/images/icon-link3.png"/></view>童装</view></view>
+    <view class="weui-flex__item"><view class="wy-links-iconlist"><view class="img"><image class="categclass"  src="../../style/images/icon-link4.png"/></view>时尚</view></view>
+  </view>
+   <view class="weui-flex wy-iconlist-box" style="font-size:12px;">
+    <view class="weui-flex__item"><view class="wy-links-iconlist"><view class="img"><image class="categclass" src="../../style/images/icon-link1.png"/></view>定制</view></view>
+    <view class="weui-flex__item"><view class="wy-links-iconlist"><view class="img"><image class="categclass" src="../../style/images/icon-link2.png"/></view>包包</view></view>
+    <view class="weui-flex__item"><view class="wy-links-iconlist"><view class="img"><image class="categclass" src="../../style/images/icon-link3.png"/></view>情侣装</view></view>
+    <view class="weui-flex__item"><view class="wy-links-iconlist"><view class="img"><image class="categclass" src="../../style/images/icon-link4.png"/></view>亲子装</view></view>
+  </view>
+</view>
+
+<!--新闻，向上滚动-->
+<view class="swiper-news-box">
+    <swiper class="swiper-news"  vertical="true"
+              autoplay="true" interval="3000" duration="300">
+      <swiper-item class="swiper-item">
+          <view class="swiper-text">祝贺次时代科技小程序商城正式上线</view>
+      </swiper-item>
+      <swiper-item class="swiper-item">
+          <view class="swiper-text">今日特价</view>
+      </swiper-item>
+    </swiper>
+</view>    
+
+<!--精选推荐-->
+<block wx:if="{{commondCount>0}}">  
+    <view class="title-box-left">
+      <view style="display:flex;">
+          <text style="flex:1;">精选推荐</text>
+          <text style="text-align:right;font-size:12px;">1/{{commondCount}}</text>
+        </view>
+    </view>
+    <scroll-view class="scroll_x_container" scroll-x="true">
+      <view class="scroll_box" wx:for="{{commondProducts}}" wx:key="{{index}}" bindtap="toDetails"  data-id="{{item.id}}">
+        <image src="{{item.mainPic}}" class="scroll_image"></image>
+      </view>
+    </scroll-view>
+</block>  
+  
+<block wx:if="{{newCount>0}}">  
+    <view class="title-box-left">
+      <view style="display:flex;">
+          <text style="flex:1;">新品上线</text>
+          <text style="text-align:right;font-size:12px;">1/{{newCount}}</text>
+        </view>
+    </view>
+    <scroll-view class="scroll_x_container" scroll-x="true">
+      <view class="scroll_box" wx:for="{{newProducts}}" wx:key="{{index}}" bindtap="toDetails"  data-id="{{item.id}}">
+        <image src="{{item.mainPic}}" class="scroll_image"></image>
+      </view>
+    </scroll-view>
+</block>    
+
+<block wx:if="{{indexCount>0}}">
+    <view class="title-box-center">
+        <view><text style="color:red;font-weight:bold;">-</text> 猜你喜欢 <text style="color:red;font-weight:bold;">-</text>
+        </view>
+    </view>
+    <view class="goods-container">
+            <view class="goods-box" wx:for-items="{{indexProducts}}" wx:key="{{index}}" bindtap="toDetails" data-id="{{item.id}}">
+              <view class="img-box">
+                  <image src="{{item.mainPic}}" class="image"/>
+              </view>
+              <view class="goods-title">{{item.name}}</view>
+              <view class="goods-price">¥ {{item.price}}</view>
+            </view>
+    </view>
+</block>    
+

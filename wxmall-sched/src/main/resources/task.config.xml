@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<item class="com.dbumama.market.task.TestTask" value="false" />
+	<item class="com.dbumama.market.task.AgentCommssionBalanceTask"
+		value="true" />
+	<item class="com.dbumama.market.task.OrderUnpayAutoCancelTask"
+		value="false" />
+	<item class="com.dbumama.market.task.OrderUnpayPressTask" value="false" />
+	<item class="com.dbumama.market.task.OrderGrouponOvertimeTask"
+		value="true" />
+</config>
